@@ -24,15 +24,21 @@ foreach ($client->parseEvents() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
-                    $client->replyMessage(array(
-                        'replyToken' => $event['replyToken'],
-                        'messages' => array(
-                            array(
-                                'type' => 'text',
-                                'text' => 'text'
-                            )
-                        )
-                    ));
+                    $imageUrl = UrlBuilder::buildUrl($this->req, ['static', 'buttons', '1040.jpg']);
+                    $buttonTemplateBuilder = new ButtonTemplateBuilder(
+                        'My button sample',
+                        'Hello my button',
+                        $imageUrl,
+                        [
+                            new UriTemplateActionBuilder('Go to line.me', 'https://line.me'),
+                            new PostbackTemplateActionBuilder('Buy', 'action=buy&itemid=123'),
+                            new PostbackTemplateActionBuilder('Add to cart', 'action=add&itemid=123'),
+                            new MessageTemplateActionBuilder('Say message', 'hello hello'),
+                        ]
+                    );
+                    $templateMessage = new TemplateMessageBuilder('Button alt text', $buttonTemplateBuilder);
+                    
+                    $client->replyMessage($event['replyToken'], $templateMessage);
                     break;
                 default:
                     error_log("Unsupporeted message type: " . $message['type']);
