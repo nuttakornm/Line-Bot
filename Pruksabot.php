@@ -14,6 +14,10 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
+use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
+
 require_once('./LINEBotTiny.php');
 $channelAccessToken = 'UJBYom3pGsI+XFblW/a3GqcL3Kah7U+t5ENQNdMKCIyB/u91jhfIHbfBkIHsRaP9Y3XFLE7M8+hPCeH0hGzI8lMMGuayWABGfUTZ4tDFTPWMQqxKNx/GNYKSF95lBGcq6T2Npz8lni5Hj3xyttHNUwdB04t89/1O/w1cDnyilFU=';
 $channelSecret = '2934c7322d4e6b01df2f0c498d86c87f';
