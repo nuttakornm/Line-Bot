@@ -27,7 +27,7 @@ foreach ($client->parseEvents() as $event) {
                 case 'text':
                     $client->replyMessage(array(
                         'replyToken' => $event['replyToken'],
-                        ''
+                        'text' => $message['text']
                     ));
                     break;
                 default:
